@@ -16,7 +16,7 @@ async function main() {
         const ccpPath = path.resolve(__dirname, "ccp", "connection-org3.json");
         let ccp = JSON.parse(fs.readFileSync(ccpPath, "utf8"));
         
-        const username = "kihyun2";
+        const username = "kihyun11";
 
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), "wallet");
@@ -50,6 +50,8 @@ async function main() {
         // Submit the specified transaction.
 
         // addUser Test : "invoketest@gmail.com"
+        // await contract.submitTransaction("userInit");
+        // console.log("Transaction has been submitted");
         await contract.submitTransaction("mint");
         console.log("Transaction has been submitted");
         // setTimeout(function () {}, 1000);

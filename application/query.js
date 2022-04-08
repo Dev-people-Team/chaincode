@@ -16,10 +16,11 @@ async function main() {
         const ccpPath = path.resolve(__dirname, "ccp", "connection-org3.json");
         const ccp = JSON.parse(fs.readFileSync(ccpPath, "utf8"));
 
-        const username = "kihyun2";
+        const username = "kihyun11";
 
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), "wallet");
+        // const walletPath = path.join(process.cwd(), "wallet");
         const wallet = await Wallets.newFileSystemWallet(walletPath);
         console.log(`Wallet path: ${walletPath}`);
 
@@ -40,17 +41,13 @@ async function main() {
             identity: username,
             discovery: { enabled: true, asLocalhost: true },
         });
-
-        console.log("DBG");
-
+        
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork("mychannel");
 
-        console.log("DBG");
         // Get the contract from the network.
         const contract = network.getContract("teamate");
 
-        console.log("DBG");
 
         
 
@@ -63,7 +60,17 @@ async function main() {
             `Transaction has been evaluated, result is: ${result.toString()}`
         );
 
-        // Disconnect from the gateway.
+        
+        // // Evaluate the specified transaction.
+        // const result2 = await contract.evaluateTransaction(
+        //     "clientAccountID",
+        //     []
+        // );
+        // console.log(
+        //     `Transaction has been evaluated, result is: ${result2.toString()}`
+        // );
+
+        // Disconnect from the gateway.  ClientAccountID
         await gateway.disconnect();
     } catch (error) {
         console.error(`Failed to evaluate transaction: ${error}`);

@@ -192,12 +192,12 @@ peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.exa
 cat log.txt
 sleep 3
 
-infoln "TEST3 : Check token balance of account"
-set -x
-peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function":"balanceOf","Args":["eDUwOTo6Q049QWRtaW5Ab3JnMy5leGFtcGxlLmNvbSxPVT1hZG1pbixMPVNhbiBGcmFuY2lzY28sU1Q9Q2FsaWZvcm5pYSxDPVVTOjpDTj1jYS5vcmczLmV4YW1wbGUuY29tLE89b3JnMy5leGFtcGxlLmNvbSxMPVNhbiBGcmFuY2lzY28sU1Q9Q2FsaWZvcm5pYSxDPVVT"]}' >&log.txt
-{ set +x; } 2>/dev/null
-cat log.txt
-sleep 3
+# infoln "TEST3 : Check token balance of account"
+# set -x
+# peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"function":"balanceOf","Args":["eDUwOTo6Q049QWRtaW5Ab3JnMy5leGFtcGxlLmNvbSxPVT1hZG1pbixMPVNhbiBGcmFuY2lzY28sU1Q9Q2FsaWZvcm5pYSxDPVVTOjpDTj1jYS5vcmczLmV4YW1wbGUuY29tLE89b3JnMy5leGFtcGxlLmNvbSxMPVNhbiBGcmFuY2lzY28sU1Q9Q2FsaWZvcm5pYSxDPVVT"]}' >&log.txt
+# { set +x; } 2>/dev/null
+# cat log.txt
+# sleep 3
 
 infoln "TEST4 : Check token balance of account(using function)"
 set -x

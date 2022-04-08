@@ -7,9 +7,10 @@ async function main() {
     try {
         // A wallet stores a collection of identities
 
-        const username = "kihyun2";
+        const username = "kihyun11";
 
         const wallet = await Wallets.newFileSystemWallet("wallet");
+        // const wallet = await Wallets.newFileSystemWallet("wallet");
         
         const checkidentity = await wallet.get(username);
         if (checkidentity) {
