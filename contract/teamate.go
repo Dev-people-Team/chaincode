@@ -35,7 +35,6 @@ type Postinginfo struct{
 	Score float64 `json:"score"`
 }
 
-
 type event struct {
 	From  string `json:"from"`
 	To    string `json:"to"`

@@ -52,7 +52,7 @@ echo "$(yaml_ccp $ORG $P0PORT $CAPORT $PEERPEM $CAPEM)" > ${DIR}/connection-org2
 
 ORG=3
 P0PORT=11051
-CAPORT=11054
+CAPORT=9054
 PEERPEM=${NET_DIR_PATH}/organizations/peerOrganizations/org3.example.com/tlsca/tlsca.org3.example.com-cert.pem
 CAPEM=${NET_DIR_PATH}/organizations/peerOrganizations/org3.example.com/ca/ca.org3.example.com-cert.pem
 

@@ -7,7 +7,7 @@ var bodyParser = require("body-parser");
 const { Wallets, Gateway } = require("fabric-network");
 const fs = require("fs");
 const path = require("path");
-const ccpPath = path.resolve(__dirname, "ccp", "connection-org1.json");
+const ccpPath = path.resolve(__dirname, "ccp", "connection-org3.json");
 let ccp = JSON.parse(fs.readFileSync(ccpPath, "utf8"));
 
 // Constants

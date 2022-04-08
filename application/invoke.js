@@ -13,8 +13,10 @@ const path = require("path");
 async function main() {
     try {
         // load the network configuration
-        const ccpPath = path.resolve(__dirname, "ccp", "connection-org1.json");
+        const ccpPath = path.resolve(__dirname, "ccp", "connection-org3.json");
         let ccp = JSON.parse(fs.readFileSync(ccpPath, "utf8"));
+        
+        const username = "kihyun2";
 
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), "wallet");
@@ -22,10 +24,10 @@ async function main() {
         console.log(`Wallet path: ${walletPath}`);
 
         // Check to see if we've already enrolled the user.
-        const identity = await wallet.get("appUser");
+        const identity = await wallet.get(username);
         if (!identity) {
             console.log(
-                'An identity for the user "appUser" does not exist in the wallet'
+                `An identity for the user ${username} does not exist in the wallet`
             );
             console.log("Run the registerUser.js application before retrying");
             return;
@@ -35,7 +37,7 @@ async function main() {
         const gateway = new Gateway();
         await gateway.connect(ccp, {
             wallet,
-            identity: "appUser",
+            identity: username,
             discovery: { enabled: true, asLocalhost: true },
         });
 
@@ -48,47 +50,47 @@ async function main() {
         // Submit the specified transaction.
 
         // addUser Test : "invoketest@gmail.com"
-        await contract.submitTransaction("addUser", "invoketest@gmail.com");
+        await contract.submitTransaction("mint");
         console.log("Transaction has been submitted");
         // setTimeout(function () {}, 1000);
 
-        var result = await contract.evaluateTransaction(
-            "readRating",
-            "invoketest@gmail.com"
-        );
-        console.log(
-            `Transaction has been evaluated, result is: ${result.toString()}`
-        );
-        // setTimeout(function () {}, 1000);
+        // var result = await contract.evaluateTransaction(
+        //     "readRating",
+        //     "invoketest@gmail.com"
+        // );
+        // console.log(
+        //     `Transaction has been evaluated, result is: ${result.toString()}`
+        // );
+        // // setTimeout(function () {}, 1000);
 
-        // addRating Test1 : "invoketest@gmail.com"-testproj1
-        await contract.submitTransaction(
-            "addRating",
-            "invoketest@gmail.com",
-            "testproj1",
-            "200"
-        );
-        console.log("Transaction has been submitted : addRating Test1");
-        // setTimeout(function () {}, 1000);
+        // // addRating Test1 : "invoketest@gmail.com"-testproj1
+        // await contract.submitTransaction(
+        //     "addRating",
+        //     "invoketest@gmail.com",
+        //     "testproj1",
+        //     "200"
+        // );
+        // console.log("Transaction has been submitted : addRating Test1");
+        // // setTimeout(function () {}, 1000);
 
-        // addRating Test2 : "invoketest@gmail.com"-testproj2
-        await contract.submitTransaction(
-            "addRating",
-            "invoketest@gmail.com",
-            "testproj2",
-            "800"
-        );
-        console.log("Transaction has been submitted : addRating Test2");
-        // setTimeout(function () {}, 1000);
+        // // addRating Test2 : "invoketest@gmail.com"-testproj2
+        // await contract.submitTransaction(
+        //     "addRating",
+        //     "invoketest@gmail.com",
+        //     "testproj2",
+        //     "800"
+        // );
+        // console.log("Transaction has been submitted : addRating Test2");
+        // // setTimeout(function () {}, 1000);
 
-        // query : "invoketest@gmail.com"
-        result = await contract.evaluateTransaction(
-            "readRating",
-            "invoketest@gmail.com"
-        );
-        console.log(
-            `Transaction has been evaluated, result is: ${result.toString()}`
-        );
+        // // query : "invoketest@gmail.com"
+        // result = await contract.evaluateTransaction(
+        //     "readRating",
+        //     "invoketest@gmail.com"
+        // );
+        // console.log(
+        //     `Transaction has been evaluated, result is: ${result.toString()}`
+        // );
 
         // Disconnect from the gateway.
         await gateway.disconnect();

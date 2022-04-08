@@ -16,7 +16,7 @@ async function main() {
         const ccpPath = path.resolve(__dirname, "ccp", "connection-org3.json");
         const ccp = JSON.parse(fs.readFileSync(ccpPath, "utf8"));
 
-        const username = "kihyun1";
+        const username = "kihyun2";
 
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), "wallet");
@@ -56,7 +56,8 @@ async function main() {
 
         // Evaluate the specified transaction.
         const result = await contract.evaluateTransaction(
-            "clientAccountBalance"
+            "clientAccountBalance",
+            []
         );
         console.log(
             `Transaction has been evaluated, result is: ${result.toString()}`
